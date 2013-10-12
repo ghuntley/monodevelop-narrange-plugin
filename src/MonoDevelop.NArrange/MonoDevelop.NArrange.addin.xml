@@ -1,0 +1,64 @@
+<Addin namespace   = "MonoDevelop.NArrange"
+       id          = "NArrange"
+       name        = "NArrange"
+       author      = "Geoffrey Huntley"
+       copyright   = "MS-PL"
+       url         = "https://github.com/ghuntley/monodevelop-narrange-plugin"
+       description = "Provides a command NArrange the current current document."
+       category    = "Source Editor Extensions"
+       version     = "1.0">
+
+<!--
+	<Header>
+		<ReleaseNotesFile>ReleaseNotes.txt</ReleaseNotesFile>
+	</Header>
+-->
+
+	<Runtime>
+		<Import assembly="MonoDevelop.NArrange.dll" />
+	</Runtime>
+	
+	<Extension path = "/MonoDevelop/Ide/Commands/Project">
+		<Command
+			id = "MonoDevelop.NArrange.NArrangeHandler"
+			_label = "Arrange Source..."
+			defaultHandler = "MonoDevelop.NArrange.NArrangeHandler" />
+	</Extension>
+	
+	<Extension path = "/MonoDevelop/Ide/MainMenu/Project">
+		<CommandItem
+			id = "MonoDevelop.NArrange.NArrangeHandler"
+			_label = "Arrange Source..."
+			insertafter = "MonoDevelop.Ide.Commands.ProjectCommands.AddReference"
+			/>
+	</Extension>
+	
+	<Extension path = "/MonoDevelop/Ide/ContextMenu/ProjectPad">
+		<Condition id="ItemType" value="Solution|Project|ProjectReferenceCollection">
+			<CommandItem
+				id = "MonoDevelop.NArrange.NArrangeHandler"
+				insertafter = "MonoDevelop.Ide.Commands.ProjectCommands.AddReference"
+				/>
+		</Condition>
+	</Extension>
+<!--	
+	<Extension path="/MonoDevelop/Core/StockIcons">
+		<StockIcon stockid="md-nuget-package" resource="packageicon.png" />
+	</Extension>
+	
+	<Extension path="/MonoDevelop/Ide/GlobalOptionsDialog">
+		<Section id="NuGetPackageManagement" _label="NuGet">
+			<Section
+				id="General"
+				_label="General"
+				fill="true"
+				class="MonoDevelop.PackageManagement.Gui.PackageManagementOptionsPanel" />
+			<Section
+				id="PackageSources"
+				_label="Package Sources"
+				fill="true"
+				class="MonoDevelop.PackageManagement.Gui.PackageSourcesOptionsPanel" />
+		</Section>
+	</Extension>
+-->
+</Addin>
